@@ -1,0 +1,52 @@
+{
+  "name": "crypto-exchange",
+  "version": "1.0.0",
+  "author": "Adrien Valcke <adrienvalcke@icloud.com> (https://github.com/adrienv1520)",
+  "description": "A simplified P2P distributed crypto exchange using Bitfinex's Grenache for communication between nodes",
+  "bin": {
+    "crypto-exchange": "src/client.js"
+  },
+  "main": "",
+  "scripts": {
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "test": "echo no test",
+    "start:crypto-exchange": "node src/server.js",
+    "start:grape1": "grape --dp 20001 --aph 30001 --bn '127.0.0.1:20002' &",
+    "start:grape2": "grape --dp 20002 --aph 40001 --bn '127.0.0.1:20001' &",
+    "start:dht": "npm run start:grape1; npm run start:grape2",
+    "stop:dht": "lsof -i tcp:30001 | awk 'NR!=1 {print $2}' | xargs kill && lsof -i tcp:40001 | awk 'NR!=1 {print $2}' | xargs kill"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:adrienv1520/crypto-exchange.git"
+  },
+  "engines": {
+    "node": ">=20.11.0",
+    "npm": ">=10.2.4"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "crypto",
+    "exchange",
+    "grenache",
+    "bitfinex"
+  ],
+  "dependencies": {
+    "commander": "12.0.0",
+    "consis": "1.5.0",
+    "grenache-nodejs-http": "0.7.13",
+    "grenache-nodejs-link": "1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "8.56.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-plugin-import": "2.29.1",
+    "grenache-grape": "0.9.12"
+  },
+  "private": false,
+  "preferGlobal": false,
+  "analyze": false,
+  "license": "See in LICENSE.md"
+}
