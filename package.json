@@ -1,6 +1,6 @@
 {
   "name": "crypto-exchange",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Adrien Valcke <adrienvalcke@icloud.com> (https://github.com/adrienv1520)",
   "description": "A simplified P2P distributed crypto exchange using Bitfinex's Grenache for communication between nodes",
   "bin": {
